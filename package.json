@@ -3,5 +3,25 @@
     "dotenv": "^16.0.3",
     "openai": "^3.1.0",
     "prompt-sync": "^4.2.0"
-  }
+  },
+  "bin": {
+    "sensei": "./sensei.js"
+  },
+  "name": "sensei-bt",
+  "version": "1.0.0",
+  "main": "sensei.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ykdojo/sensei.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ykdojo/sensei/issues"
+  },
+  "homepage": "https://github.com/ykdojo/sensei#readme",
+  "description": ""
 }
