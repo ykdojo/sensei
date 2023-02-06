@@ -1,4 +1,4 @@
-async function test_davinci() {
+async function call_davinci(prompt) {
   const { Configuration, OpenAIApi } = require("openai")
   require('dotenv').config()
   const openai_key = process.env.OPENAI_API_KEY
@@ -11,11 +11,11 @@ async function test_davinci() {
   const openai = new OpenAIApi(config)
   const response = await openai.createCompletion({
     model: "text-davinci-003",
-    prompt: "Dear recruiter",
+    prompt: prompt,
     max_tokens: 300,
     temperature: 0,
   })
-  console.log(response.data.choices[0].text)
+  return response.data.choices[0].text
 }
 
-test_davinci()
+module.exports = call_davinci
