@@ -8,6 +8,10 @@ sensei -c nvm install a specific version of node
 
 sensei -c npm install a package from the current working directory
 
+## Explain a command
+
+sensei -e git reset --hard <commit-hash>
+
 ## Ask anything
 
 sensei -a how to install multiple versions of node
