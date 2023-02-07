@@ -8,19 +8,19 @@
 
 ## Find a command
 
-sensei -c revert back to a particular commit with git
+sensei -c
 
-sensei -c nvm install a specific version of node
+Describe a command you want to find: revert back to a particular commit with git
 
-sensei -c npm install a package from the current working directory
+sensei -c
+
+Describe a command you want to find: npm globally install a package from the current working directory
 
 ## Explain a command
 
 sensei -e
 
-Enter a command to explain:
-
-git reset --hard <commit-hash>
+Enter a command to explain: git reset --hard <commit-hash>
 
 ## Ask anything (TODO: use Codex?)
 
