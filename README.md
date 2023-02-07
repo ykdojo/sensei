@@ -24,14 +24,14 @@ git reset --hard <commit-hash>
 
 ## Ask anything (TODO: use Codex?)
 
-sensei -a how to install multiple versions of node
-
-sensei -a how to resolve a merge conflict
-
 sensei -a
 
-Ask sensei anything: how to check if a member exists in a JS object
+Ask sensei anything: how to install multiple versions of node
 
 sensei -a
 
 Ask sensei anything: syntax for error handling in JS
+
+sensei -a
+
+Ask sensei anything: how to resolve a merge conflict
