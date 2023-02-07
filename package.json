@@ -8,7 +8,7 @@
   "bin": {
     "sensei": "./sensei.js"
   },
-  "name": "sensei-bt",
+  "name": "sensei",
   "version": "1.0.0",
   "main": "sensei.js",
   "scripts": {
