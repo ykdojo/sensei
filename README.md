@@ -8,9 +8,7 @@
 
 ## Find a command
 
-sensei -c
-
-Describe a command you want to find: revert back to a particular commit with git
+sensei -c revert back to a particular commit with git
 
 sensei -c
 
@@ -24,13 +22,9 @@ Enter a command to explain: git reset --hard <commit-hash>
 
 ## Ask anything (TODO: use Codex?)
 
-sensei -a
+sensei -a how to install multiple versions of node
 
-Ask sensei anything: how to install multiple versions of node
-
-sensei -a
-
-Ask sensei anything: syntax for error handling in JS
+sensei -a syntax for error handling in JS
 
 sensei -a
 
