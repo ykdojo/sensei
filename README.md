@@ -7,6 +7,8 @@
 - Step 2: Run `npm install -g .`
 - Step 3: Run `sensei`
 
+(To uninstall this, run `npm uninstall -g sensei`)
+
 ## Troubleshooting
 
 Note: I'm using node 17.9.1, npm 8.11.0.
