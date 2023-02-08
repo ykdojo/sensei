@@ -2,6 +2,7 @@
 
 ## Set this up
 
+- Step 0: Fork and clone this repo into your local env
 - Step 1: Copy .env.example to .env and replace the OpenAI key (you'll need to sign up)
 - Step 2: Run `npm install -g .`
 - Step 3: Run `sensei`
@@ -20,7 +21,7 @@ sensei -e
 
 Enter a command to explain: git reset --hard <commit-hash>
 
-## Ask anything (TODO: use Codex?)
+## Ask anything
 
 sensei -a how to install multiple versions of node
 
