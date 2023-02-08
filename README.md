@@ -27,6 +27,10 @@ sensei -e
 
 Enter a command to explain: git reset --hard <commit-hash>
 
+sensei -e 
+
+Enter a command to explain: npm install -g ./
+
 ## Ask anything
 
 sensei -a how to install multiple versions of node
@@ -36,3 +40,11 @@ sensei -a syntax for error handling in JS
 sensei -a
 
 Ask sensei anything: how to resolve a merge conflict
+
+## A pro tip
+
+If your explanation / command contains a special character, entering it as a series of arguments might not work.
+
+In that case, try running the command without any arguments as in:
+
+sensei -e

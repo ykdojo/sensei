@@ -23,8 +23,7 @@ function getInput(options, command, promptStr) {
   if (options[command].length > 0) {
     strToReturn = options[command].join(' ')
   } else {
-    console.log(promptStr)
-    strToReturn = promptSync("")
+    strToReturn = promptSync(promptStr)
   }
   return strToReturn
 }
@@ -57,7 +56,12 @@ async function sensei() {
     console.log("")
     console.log("Example 2:")
     console.log("sensei -e")
-    console.log("Enter a command to explain: git reset --hard <commit-hash>\n")
+    console.log("Enter a command to explain: git reset --hard <commit-hash>")
+    console.log("")
+    console.log("A pro tip:")
+    console.log("If your explanation / command contains a special character, entering it as a series of arguments might not work.")
+    console.log("In that case, try running the command without any arguments as in:")
+    console.log("sensei -e\n")
   }
 
   let result
