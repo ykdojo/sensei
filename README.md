@@ -15,31 +15,39 @@ If the above steps don't work, feel free to try the same node version.
 
 ## Find a command
 
-sensei -c revert back to a particular commit with git
+`sensei -c revert back to a particular commit with git`
 
+```
 sensei -c
 
 Describe a command you want to find: npm globally install a package from the current working directory
+```
 
 ## Explain a command
 
+```
 sensei -e
 
 Enter a command to explain: git reset --hard <commit-hash>
+```
 
+```
 sensei -e 
 
 Enter a command to explain: npm install -g ./
+```
 
 ## Ask anything
 
-sensei -a how to install multiple versions of node
+`sensei -a how to install multiple versions of node`
 
-sensei -a syntax for error handling in JS
+`sensei -a syntax for error handling in JS`
 
+```
 sensei -a
 
 Ask sensei anything: how to resolve a merge conflict
+```
 
 ## A pro tip
 
@@ -47,4 +55,4 @@ If your explanation / command contains a special character, entering it as a ser
 
 In that case, try running the command without any arguments as in:
 
-sensei -e
+`sensei -e`
