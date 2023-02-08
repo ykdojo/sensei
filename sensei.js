@@ -42,8 +42,7 @@ async function sensei() {
     const explainCommandPrompt = explainCommandTemplate.replace('<command>', command)
     prompt = explainCommandPrompt
   } else if (options.hasOwnProperty('c')) {
-    const command = getInput(options, 'c', "Describe a command you want to find: ")
-    const description = promptSync("")
+    const description = getInput(options, 'c', "Describe a command you want to find: ")
     const findCommandPrompt = findCommandTemplate.replace('<use case>', description)
     prompt = findCommandPrompt
   } else {

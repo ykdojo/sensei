@@ -7,6 +7,12 @@
 - Step 2: Run `npm install -g .`
 - Step 3: Run `sensei`
 
+## Troubleshooting
+
+Note: I'm using node 17.9.1, npm 8.11.0.
+
+If the above steps don't work, feel free to try the same node version.
+
 ## Find a command
 
 sensei -c revert back to a particular commit with git
