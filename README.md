@@ -4,7 +4,7 @@
 
 [Link](https://twitter.com/ykdojo/status/1623331818723213314)
 
-## Set this up
+## How to set this up
 
 - Step 0: Fork and clone this repo into your local env
 - Step 1: Copy .env.example to .env and replace the OpenAI key (you'll need to sign up)
