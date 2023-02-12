@@ -62,3 +62,7 @@ If your explanation / command contains a special character, entering it as a ser
 In that case, try running the command without any arguments as in:
 
 `sensei -e`
+
+## How this works / how I built it
+
+There's a Loom video where I explain it: [link](https://www.loom.com/share/a46c58cdcd9a4a0584740791b0f6ac3f)
