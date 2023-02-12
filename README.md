@@ -1,10 +1,8 @@
-# Sensei
-
-## Demo
+# Demo
 
 [Link](https://twitter.com/ykdojo/status/1623331818723213314)
 
-## How to set this up
+# How to set this up
 
 - Step 0: Fork and clone this repo into your local env
 - Step 1: Copy .env.example to .env and replace the OpenAI key (you'll need to sign up)
@@ -18,6 +16,8 @@
 Note: I'm using node 17.9.1, npm 8.11.0.
 
 If the above steps don't work, feel free to try the same node version.
+
+# How to use it
 
 ## Find a command
 
@@ -63,6 +63,6 @@ In that case, try running the command without any arguments as in:
 
 `sensei -e`
 
-## How this works / how I built it
+# How this works / how I built it
 
 There's a Loom video where I explain it: [link](https://www.loom.com/share/a46c58cdcd9a4a0584740791b0f6ac3f)
