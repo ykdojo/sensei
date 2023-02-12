@@ -1,4 +1,4 @@
-# How to use it
+# Sensei
 
 ## Demo
 
