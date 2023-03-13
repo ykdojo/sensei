@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 const call_davinci = require('./call_davinci')
+const callChatGPT = require('./call_chatgpt')
 const {findCommandTemplate, explainCommandTemplate, askQuestionTemplate} = require('./prompts')
 const promptSync = require('prompt-sync')()
 
@@ -70,22 +71,7 @@ async function sensei() {
     // If the flag is c or e, use Davinci API
     if (options.hasOwnProperty('a')) {
       // Give the prompt to ChatGPT API
-      const { Configuration, OpenAIApi } = require("openai");
-
-      require('dotenv').config()
-      const openai_key = process.env.OPENAI_API_KEY
-      const configuration = new Configuration({
-        apiKey: openai_key,
-      });
-      const openai = new OpenAIApi(configuration);
-
-      const completion = await openai.createChatCompletion({
-        model: "gpt-3.5-turbo",
-        messages: [{role: "user", content: prompt}],
-      });
-      result = completion.data.choices[0].message.content
-      // Remove surrounding whitespaces from result
-      result = result.trim()
+      result = await callChatGPT(prompt)
     } else {
       result = await call_davinci(prompt)
     }
