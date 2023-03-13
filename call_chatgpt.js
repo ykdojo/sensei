@@ -1,4 +1,5 @@
-async function callChatGPT(prompt) {
+// conversation format: [{role: "user", content: prompt}]
+async function callChatGPT(conversation) {
   const { Configuration, OpenAIApi } = require("openai");
 
   require('dotenv').config()
@@ -10,7 +11,7 @@ async function callChatGPT(prompt) {
 
   const completion = await openai.createChatCompletion({
     model: "gpt-3.5-turbo",
-    messages: [{role: "user", content: prompt}],
+    messages: conversation,
   });
   let result = completion.data.choices[0].message.content
   // Remove surrounding whitespaces from result

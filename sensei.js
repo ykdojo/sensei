@@ -71,7 +71,8 @@ async function sensei() {
     // If the flag is c or e, use Davinci API
     if (options.hasOwnProperty('a')) {
       // Give the prompt to ChatGPT API
-      result = await callChatGPT(prompt)
+      const conversation = [{role: "user", content: prompt}]
+      result = await callChatGPT(conversation)
     } else {
       result = await call_davinci(prompt)
     }
