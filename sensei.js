@@ -34,8 +34,7 @@ async function sensei() {
   // TODO: When none of the correct flags are selected, explain the flags.
   if (options.hasOwnProperty('a')) {
     const question = getInput(options, 'a', "Ask sensei anything: ")
-    const askQuestionPrompt = askQuestionTemplate.replace('<question>', question)
-    prompt = askQuestionPrompt
+    prompt = question
   } else if (options.hasOwnProperty('e')) {
     const command = getInput(options, 'e', "Enter a command to explain: ")
     const explainCommandPrompt = explainCommandTemplate.replace('<command>', command)
@@ -66,12 +65,33 @@ async function sensei() {
 
   let result
   try {
-    // console.log('Calling Davinci')
-    if (prompt) {
+    // Assume prompt is present
+    // If the flag is a, use ChatGPT API
+    // If the flag is c or e, use Davinci API
+    if (options.hasOwnProperty('a')) {
+      // Give the prompt to ChatGPT API
+      const { Configuration, OpenAIApi } = require("openai");
+
+      require('dotenv').config()
+      const openai_key = process.env.OPENAI_API_KEY
+      const configuration = new Configuration({
+        apiKey: openai_key,
+      });
+      const openai = new OpenAIApi(configuration);
+
+      const completion = await openai.createChatCompletion({
+        model: "gpt-3.5-turbo",
+        messages: [{role: "user", content: prompt}],
+      });
+      result = completion.data.choices[0].message.content
+      // Remove surrounding whitespaces from result
+      result = result.trim()
+    } else {
       result = await call_davinci(prompt)
     }
   } catch(e) {
     console.log('Encountered an error! Please try again.')
+    console.log(e)
   }
   if (result) {
     console.log(result)
