@@ -35,15 +35,20 @@ async function sensei() {
   // TODO: When none of the correct flags are selected, explain the flags.
   if (options.hasOwnProperty('a')) {
     // Explain how to exit the conversation
-    console.log("Type 'exit' to end the conversation.\n")
+    console.log("Type 'exit' or send an empty message to end the conversation.\n")
 
     // Initialize the conversation array
-    let conversation = []
+    let conversation = [{"role": "system", "content": "You are an AI terminal assistant called Sensei. Your role is to help people remember commands, explain them, and have a back-and-forth conversation with the user."}]
 
     // Start the conversation loop
     while (true) {
       // Prompt user for input
       const userMessage = getInput(options, 'a', "You: ")
+
+      // End loop if the user wants to exit
+      if (!userMessage || userMessage.toLowerCase().includes("exit")) {
+        break;
+      }
 
       // Add the user's message to the conversation array
       conversation.push({role: "user", content: userMessage})
@@ -55,12 +60,7 @@ async function sensei() {
       conversation.push({role: "assistant", content: assistantMessage})
 
       // Display the assistant's response
-      console.log("Assistant:", assistantMessage)
-
-      // End loop if the user wants to exit
-      if (userMessage.toLowerCase().includes("exit")) {
-        break;
-      }
+      console.log("Sensei:", assistantMessage)
     }
   } else if (options.hasOwnProperty('e')) {
     const command = getInput(options, 'e', "Enter a command to explain: ")
