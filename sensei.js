@@ -34,13 +34,34 @@ async function sensei() {
 
   // TODO: When none of the correct flags are selected, explain the flags.
   if (options.hasOwnProperty('a')) {
-    const question = getInput(options, 'a', "Ask sensei anything: ")
-    prompt = question
+    // Explain how to exit the conversation
+    console.log("Type 'exit' to end the conversation.\n")
 
-    // Give the prompt to ChatGPT API
-    const conversation = [{role: "user", content: prompt}]
-    const assistantMessage = await callChatGPT(conversation)
-    console.log(assistantMessage)
+    // Initialize the conversation array
+    let conversation = []
+
+    // Start the conversation loop
+    while (true) {
+      // Prompt user for input
+      const userMessage = getInput(options, 'a', "You: ")
+
+      // Add the user's message to the conversation array
+      conversation.push({role: "user", content: userMessage})
+
+      // Give the user's message to ChatGPT API
+      const assistantMessage = await callChatGPT(conversation)
+
+      // Add the assistant's message to the conversation array
+      conversation.push({role: "assistant", content: assistantMessage})
+
+      // Display the assistant's response
+      console.log("Assistant:", assistantMessage)
+
+      // End loop if the user wants to exit
+      if (userMessage.toLowerCase().includes("exit")) {
+        break;
+      }
+    }
   } else if (options.hasOwnProperty('e')) {
     const command = getInput(options, 'e', "Enter a command to explain: ")
     const explainCommandPrompt = explainCommandTemplate.replace('<command>', command)
