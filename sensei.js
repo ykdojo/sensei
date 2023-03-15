@@ -36,6 +36,11 @@ async function sensei() {
   if (options.hasOwnProperty('a')) {
     const question = getInput(options, 'a', "Ask sensei anything: ")
     prompt = question
+
+    // Give the prompt to ChatGPT API
+    const conversation = [{role: "user", content: prompt}]
+    const assistantMessage = await callChatGPT(conversation)
+    console.log(assistantMessage)
   } else if (options.hasOwnProperty('e')) {
     const command = getInput(options, 'e', "Enter a command to explain: ")
     const explainCommandPrompt = explainCommandTemplate.replace('<command>', command)
@@ -67,21 +72,16 @@ async function sensei() {
   let result
   try {
     // Assume prompt is present
-    // If the flag is a, use ChatGPT API
-    // If the flag is c or e, use Davinci API
-    if (options.hasOwnProperty('a')) {
-      // Give the prompt to ChatGPT API
-      const conversation = [{role: "user", content: prompt}]
-      result = await callChatGPT(conversation)
-    } else {
+    // If the flag is c or e, use Davinci API (for now)
+    if (!options.hasOwnProperty('a')) {
       result = await call_davinci(prompt)
+      if (result) {
+        console.log(result)
+      }
     }
   } catch(e) {
     console.log('Encountered an error! Please try again.')
     console.log(e)
-  }
-  if (result) {
-    console.log(result)
   }
 }
 sensei()
