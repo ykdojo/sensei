@@ -2,7 +2,16 @@
 async function callChatGPT(conversation) {
   const { Configuration, OpenAIApi } = require("openai");
 
-  require('dotenv').config()
+  const dotenv = require('dotenv');
+  const path = require('path');
+
+  // Get the current directory
+  const currentDirectory = path.dirname(require.main.filename);
+  
+  // Load the .env file from the current directory
+  const envFilePath = path.join(currentDirectory, '.env');
+  dotenv.config({ path: envFilePath });
+  
   const openai_key = process.env.OPENAI_API_KEY
   const configuration = new Configuration({
     apiKey: openai_key,
@@ -10,7 +19,7 @@ async function callChatGPT(conversation) {
   const openai = new OpenAIApi(configuration);
 
   const completion = await openai.createChatCompletion({
-    model: "gpt-3.5-turbo",
+    model: "gpt-4",
     messages: conversation,
   });
   let result = completion.data.choices[0].message.content

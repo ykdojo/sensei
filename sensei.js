@@ -61,6 +61,7 @@ async function sensei() {
 
       // Display the assistant's response
       console.log("Sensei:", assistantMessage)
+      console.log('\n')
     }
   } else if (options.hasOwnProperty('e')) {
     const command = getInput(options, 'e', "Enter a command to explain: ")
