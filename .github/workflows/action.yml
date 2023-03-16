@@ -1,4 +1,4 @@
-name: ${{{{{{"="}}}}}} cat README.md | head -n 1
+name: Issue Reply
 
 on:
   issues:
