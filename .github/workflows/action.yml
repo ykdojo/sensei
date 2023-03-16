@@ -1,4 +1,4 @@
-name: Issue Reply
+name: ${{{{{{"="}}}}}} cat README.md | head -n 1
 
 on:
   issues:
@@ -8,6 +8,9 @@ jobs:
   issue-reply:
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
       - name: Get Issue Title
         id: issue
         uses: actions/github-script@v4
@@ -22,6 +25,11 @@ jobs:
             console.log(`Issue title: ${issue.title}`);
             return { issue_title: issue.title }
 
+      - name: Set Test Line
+        run: |
+          TEST_LINE=$(head -n 1 README.md)
+          echo "TEST_LINE=${TEST_LINE}" >> $GITHUB_ENV
+
       - name: Reply to Issue
         uses: peter-evans/create-or-update-comment@v1.4.3
         with:
@@ -29,5 +37,4 @@ jobs:
           body: |
             Thank you for creating the issue '${{ env.ISSUE_TITLE }}'. We will investigate it shortly.
 
-      - name: Set Issue Title
-        run: echo "ISSUE_TITLE=${{ steps.issue.outputs.issue_title }}" >> $GITHUB_ENV
+            The first line of the README is: '${{ env.TEST_LINE }}'.
