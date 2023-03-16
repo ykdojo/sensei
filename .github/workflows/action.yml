@@ -8,18 +8,26 @@ jobs:
   issue-reply:
     runs-on: ubuntu-latest
     steps:
-    - name: Get Issue Title
-      run: |
-        echo "::set-env name=ISSUE_TITLE::${{ github.event.issue.title }}"
-    - name: Reply to Issue
-      uses: actions/github-script@v4
-      with:
-        github-token: ${{ secrets.GITHUB_TOKEN }}
-        script: |
-          const { data: comment } = await github.issues.createComment({
-            owner: context.repo.owner,
-            repo: context.repo.repo,
-            issue_number: context.payload.issue.number,
-            body: `Thank you for creating the issue '${process.env.ISSUE_TITLE}'. We will investigate it shortly.`
-          });
-          console.log(`Comment created: ${comment.html_url}`);
+      - name: Get Issue Title
+        id: issue
+        uses: actions/github-script@v4
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const { data: issue } = await github.issues.get({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number
+            });
+            console.log(`Issue title: ${issue.title}`);
+            return { issue_title: issue.title }
+
+      - name: Reply to Issue
+        uses: peter-evans/create-or-update-comment@v1.4.3
+        with:
+          issue-number: ${{ github.event.issue.number }}
+          body: |
+            Thank you for creating the issue '${{ env.ISSUE_TITLE }}'. We will investigate it shortly.
+
+      - name: Set Issue Title
+        run: echo "ISSUE_TITLE=${{ steps.issue.outputs.issue_title }}" >> $GITHUB_ENV
