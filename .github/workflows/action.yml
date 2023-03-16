@@ -1,0 +1,25 @@
+name: Issue Reply
+
+on:
+  issues:
+    types: [opened]
+
+jobs:
+  issue-reply:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Get Issue Title
+      run: |
+        echo "::set-env name=ISSUE_TITLE::${{ github.event.issue.title }}"
+    - name: Reply to Issue
+      uses: actions/github-script@v4
+      with:
+        github-token: ${{ secrets.GITHUB_TOKEN }}
+        script: |
+          const { data: comment } = await github.issues.createComment({
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            issue_number: context.payload.issue.number,
+            body: `Thank you for creating the issue '${process.env.ISSUE_TITLE}'. We will investigate it shortly.`
+          });
+          console.log(`Comment created: ${comment.html_url}`);
